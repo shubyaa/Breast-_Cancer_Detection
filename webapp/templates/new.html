@@ -1,0 +1,565 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Breast Cancer Detection</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'img/favicon.png' %}" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'vendor/boxicons/css/boxicons.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="">
+      <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo"><a href="index.html">Detector</a></h1>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+      <div
+        class="container position-relative"
+        data-aos="fade-up"
+        data-aos-delay="50"
+      >
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Breast Cancer Detection</h1>
+          <h2>A tool to detect breast cancer</h2>
+        </div>
+      </div>
+ 
+        <div class="card p-4 m-2 ">
+          <form method="post">
+            {% csrf_token %}
+            <div class="d-flex flex-column">
+              <fieldset class="form-group card p-4 mb-3">
+                <div class="row">
+                  <legend class="col-form-label col-sm pt-0">ER-Status</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="erStatus" id="erStatus1" value=1 checked>
+                      <label class="form-check-label" for="erStatus1">
+                        Positive
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="erStatus" id="erStatus2" value=0>
+                      <label class="form-check-label" for="erStatus2">
+                        Negative
+                      </label>
+                    </div>
+                   
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-group card p-4 mb-3">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">PR-Status</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="prStatus" id="prStatus1" value=1 checked>
+                      <label class="form-check-label" for="prStatus1">
+                        Positive
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="prStatus" id="prStatus2" value=0>
+                      <label class="form-check-label" for="prStatus2">
+                        Negative
+                      </label>
+                    </div>
+                   
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-group card p-4 mb-3">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">HER2 status</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="herstatus" id="herstatus1" value=1.0>
+                      <label class="form-check-label" for="herstatus2">
+                        Positive
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="herstatus" id="herstatus2" value=0.5 checked>
+                      <label class="form-check-label" for="herstatus2">
+                        Equivocal
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="herstatus" id="herstatus3" value=0>
+                      <label class="form-check-label" for="herstatus3">
+                        Negative
+                      </label>
+                    </div>
+                   
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn-get-started scrollto">Detection of Breast Cancer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+     
+
+        <div class="row icon-boxes">
+          <div
+            class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="ri-hospital-fill"></i></div>
+              <h4 class="title">
+                <a href="">Maintain a healthy lifestyle </a>
+              </h4>
+              <p class="description">
+                Eating a balanced diet that is rich in fruits, vegetables, and
+                whole grains, and low in saturated fats and processed foods can
+                help reduce your risk of breast cancer.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="ri-heart-3-fill"></i></div>
+              <h4 class="title"><a href="">Limit alcohol consumption</a></h4>
+              <p class="description">
+                Drinking alcohol has been linked to an increased risk of breast
+                cancer. 
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="ri-capsule-fill"></i></div>
+              <h4 class="title"><a href="">Get regular screenings</a></h4>
+              <p class="description">
+                Early detection is key to successfully treating breast cancer.
+                Women who are over the age of 50 should get mammograms every two
+                years
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="ri-mental-health-fill"></i></div>
+              <h4 class="title"><a href="">Know your family history</a></h4>
+              <p class="description">
+                If you have a family history of breast cancer, you may be at a
+                higher risk. Talk to your doctor about genetic testing and other
+                screening options that may be appropriate for you. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+                  <!-- ======= Cta Section ======= -->
+                  <section id="cta" class="cta">
+                    <div class="container" data-aos="zoom-in">
+                      <div class="text-center">
+                        <h3>Results</h3>
+                        <p>
+                          The Result is :  {{answer}}
+                        </p>
+                        </div>
+                    </div>
+                  </section>
+                  <!-- End Cta Section -->
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>About Us</h2>
+            <p>
+              Breast cancer is a type of cancer that develops in the breast tissue. It is the most common cancer in women worldwide and can also occur in men, although it is rare.
+            </p>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-6">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
+                Early detection is important for the successful treatment of breast cancer, and routine screening is recommended for women at average risk starting at age 50. Women with a higher risk of breast cancer may need to start screening earlier or undergo additional testing, such as breast MRI. Breast self-exams can also help detect changes in the breast, but they are not a substitute for regular screening or clinical breast exams by a healthcare provider.
+              </p>
+              
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <p>
+                The causes of breast cancer are not fully understood, but certain risk factors have been identified, such as age, gender, family history, genetic mutations, hormone imbalances, exposure to radiation, alcohol consumption, and obesity.
+              </p>
+              <a href="https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm#:~:text=Breast%20cancer%20is%20a%20disease,different%20parts%20of%20the%20breast." target="_blank" class="btn-learn-more">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Section -->
+
+
+      <!-- ======= Counts Section ======= -->
+      <section id="counts" class="counts section-bg">
+        <div class="container">
+          <div class="row justify-content-end">
+            <div
+              class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch"
+            >
+              <div class="count-box">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="13"
+                  data-purecounter-duration="2"
+                  class="purecounter"
+                ></span>
+                <p>People to have Breast Cancer Rates (%)</p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch"
+            >
+              <div class="count-box">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="99"
+                  data-purecounter-duration="2"
+                  class="purecounter"
+                ></span>
+                <p>Overall Survival Rate (%)</p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch"
+            >
+              <div class="count-box">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="14"
+                  data-purecounter-duration="2"
+                  class="purecounter"
+                ></span>
+                <p>Triple Negative Breast Cancer Rates (%)</p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch"
+            >
+              <div class="count-box">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="90"
+                  data-purecounter-duration="2"
+                  class="purecounter"
+                ></span>
+                <p>Percent of people live longer (%)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Counts Section -->
+
+      <!-- ======= About Video Section ======= -->
+      <section id="about-video" class="about-video">
+        <div class="container" data-aos="fade-up">
+          <div class="row">
+            <div
+              class="col-lg-6 video-box align-self-baseline"
+              data-aos="fade-right"
+              data-aos-delay="50"
+            >
+              <iframe
+                width="600"
+                height="400"
+                src="https://www.youtube.com/embed/9E_-dLYl6nE"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div
+              class="col-lg-6 pt-3 pt-lg-0 content"
+              data-aos="fade-left"
+              data-aos-delay="100"
+            >
+              <h3>Treating Breast Cancer in 5 days.</h3>
+              <p class="fst-italic">
+                Maureen shares her experience at Sharp Chula Vista’s Barnhart
+                Cancer Center and offers important advice for women over 40:
+                Don’t put off getting your mammogram.
+              </p>
+              <ul>
+                <li>
+                  <i class="bx bx-check-double"></i> A diet rich in fruits,
+                  vegetables, whole grains, and lean protein can help reduce
+                  your risk of breast cancer .
+                </li>
+                <li>
+                  <i class="bx bx-check-double"></i> Regular exercise can help
+                  lower your risk of breast cancer. Aim for at least 150 minutes
+                  of moderate-intensity activity or 75 minutes of
+                  vigorous-intensity activity per week. .
+                </li>
+                <li>
+                  <i class="bx bx-check-double"></i> Drinking alcohol has been
+                  linked to an increased risk of breast cancer. If you drink,
+                  limit your intake to one drink per day or less.
+                </li>
+                <li>
+                  <i class="bx bx-check-double"></i> Early detection is key to
+                  successful treatment of breast cancer. Women should get
+                  regular mammograms starting at age 50, or earlier if they have
+                  certain risk factors.
+                </li>
+              </ul>
+              <p>
+                Because Maureen’s cancer was found early, she was a candidate
+                for a type of treatment called SAVI, which delivers radiation to
+                the tumor site through small, flexible tubes. SAVI is finished
+                in just five days, compared to weeks with other types of
+                radiation treatment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Video Section -->
+
+      <!-- ======= Testimonials Section ======= -->
+      <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Our Thrivers</h2>
+            <p>
+              Some cancer survivors share their stories about talking to their doctors about mental health issues during and after their cancer treatment.
+            </p>
+          </div>
+
+          <div
+            class="testimonials-slider swiper"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Going through cancer and its treatment has changed me
+                    forever. Never again will I be a victim of circumstance.
+                    Instead, I will choose to have hope, have faith and seek
+                    support. I will continue to build my relationship with God,
+                    and also with my loved ones.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="{% static 'img/testimonials/testimonials-2.jpg' %}"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Laura Ashurst</h3>
+                  <h4>Cancer Campaigns Ambassadors</h4>
+                </div>
+              </div>
+              <!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Living with secondary breast cancer has been challenging,
+                    but it has also brought wonderful experiences into my life.
+                    Becoming a Cancer Research UK Ambassador in 2011 is up there
+                    on my list of achievements.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="{% static 'img/testimonials/testimonials-1.jpg' %}"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Rober Dave</h3>
+                  <h4>Designer</h4>
+                </div>
+              </div>
+              <!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Tell them as much as you can, whether you’re proud or happy
+                    or you have amazing memories. Never forget that a message of
+                    love, support and unity, in any form, is a beautiful thing
+                    and I believe we should do it so much more.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="{% static 'img/testimonials/testimonials-3.jpg' %}"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Jena Karlis</h3>
+                  <h4>Philosopher</h4>
+                </div>
+              </div>
+              <!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    But for patients and survivors, the incremental progress
+                    made through research can sometimes feel a little distant.
+                    Matt recognizes
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="{% static 'img/testimonials/testimonials-4.jpg' %}"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Matt Brandon</h3>
+                  <h4>Golf Player</h4>
+                </div>
+              </div>
+              <!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Quis quorum aliqua sint quem legam fore sunt eram irure
+                    aliqua veniam tempor noster veniam enim culpa labore duis
+                    sunt culpa nulla illum cillum fugiat legam esse veniam culpa
+                    fore nisi cillum quid.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="{% static 'img/testimonials/testimonials-5.jpg' %}"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                </div>
+              </div>
+              <!-- End testimonial item -->
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <!-- End Testimonials Section -->
+
+  
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Breast Cancer Detector</span></strong
+            >. All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+    <!-- Latest compiled and minified JavaScript -->
+
+    <!-- Template Main JS File -->
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
